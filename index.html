@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="src/style/animate.min.css" />
+    <link rel="stylesheet" href="src/style/style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="src/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="src/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="src/favicon/favicon-16x16.png">
+    <link rel="manifest" href="src/favicon/site.webmanifest">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+    <header>
+        <div class="animate__animated animate__fadeInDown wpmoon">
+            <h3 id="moon" onclick="toggleDarkMode()">🌚</h3>
+        </div>
+    </header>
+    <br />
+    <div class="flex-container">
+        <div class="card animate__animated animate__slideInLeft" id="main-card">
+        </div>
+    </div>
+</body>
+
+<script src="./src/js/main.js" type="module"></script>
+
+<script>
+    if (localStorage.getItem("preferredTheme") == "dark") toggleDarkMode();
+
+    function toggleDarkMode() {
+        const themeBtn = document.getElementById("moon");
+        let emoticon = "";
+        let isDark = document.body.classList.toggle("darkmode");
+
+        if (isDark) {
+            emoticon = "🌝";
+            localStorage.setItem("preferredTheme", "dark");
+        } else {
+            emoticon = "🌚";
+            localStorage.removeItem("preferredTheme");
+        }
+
+        themeBtn.innerHTML = emoticon;
+    }
+</script>
+
+</html>
